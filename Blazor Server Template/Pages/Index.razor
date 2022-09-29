@@ -1,0 +1,15 @@
+﻿@page "/"
+
+@inject Services.Logger.ILogger _logger
+
+<h3>Index</h3>
+
+<MudButton OnClick="@LogTest">Click me!</MudButton>
+
+@code {
+    void LogTest()
+    {
+        _logger.Log(LogLevel.Information, "Hello, World");
+        _logger.Log(LogLevel.Critical, "Hello, World", new NotSupportedException("This platform is not supported."));
+    }
+}

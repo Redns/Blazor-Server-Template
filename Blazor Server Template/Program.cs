@@ -1,5 +1,7 @@
+using Blazor_Server_Template.Logger;
 using MudBlazor;
 using MudBlazor.Services;
+using ILogger = Blazor_Server_Template.Services.Logger.ILogger;
 
 // TODO Blazor_Server_Template ---> $safeprojectname$
 namespace Blazor_Server_Template
@@ -37,6 +39,7 @@ namespace Blazor_Server_Template
                 // 清除默认日志组件
                 logging.ClearProviders();
             });
+            builder.Services.AddSingleton<ILogger>(logger => new Log4netLogger("log4net.config"));
 
 
             var app = builder.Build();
